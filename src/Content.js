@@ -30,7 +30,7 @@ export default class Content extends Component {
     }
 
     get_data = () => {
-        axios.get('https://github.com/emixbal/react-arkademy-training.git')
+        axios.get('https://jsonplaceholder.typicode.com/posts')
         .then(data => {
             const newData = this.state.data.concat(data.data)
 
@@ -42,12 +42,13 @@ export default class Content extends Component {
 
   render(){
       const {data} = this.state;
-      const list_data = data.map(item => {
+      const list_data = data.map((item, i) => {
           return (
               <div>
-                  <h3>
+                  <p>
+                     {i + 1}. &nbsp;
                     {item.body}
-                  </h3>
+                </p>
               </div>
           )
       })
@@ -59,6 +60,9 @@ export default class Content extends Component {
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
 
+        <br />
+        <br />
+        <h3>Content</h3>
         {list_data}
       </div>
     )
